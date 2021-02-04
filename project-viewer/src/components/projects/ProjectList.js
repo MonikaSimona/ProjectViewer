@@ -1,12 +1,16 @@
 import React from 'react'
 import Project from './Project'
+import {Link} from 'react-router-dom'
 
-function ProjectList() {
+function ProjectList({projects}) {
     return (
         <div className="project-list section">
-           <Project/>
-           <Project/>
-           <Project/>
+        {projects && projects.map(project => (
+            <Link to={`/project/${project.id}`} key={project.id}>
+            <Project  project={project}/>
+            </Link>
+        ))}
+          
         </div>
     )
 }
